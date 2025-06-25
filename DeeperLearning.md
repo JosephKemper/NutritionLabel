@@ -878,3 +878,225 @@ Before diving in, let’s ensure we’re on the same page with terminology, as y
 > - Unlike Python classes (object blueprints), HTML classes are simple labels for elements, not programming constructs.
 > 
 > Your Python background and BYU-Idaho experience are helping you draw smart analogies (spaces as separators) and question mechanics (one vs. two classes), making you a stronger web developer. The space in `class="divider large"` is indeed why two classes are created, and you can target them flexibly. Great job connecting your past learning to this project! If you want to explore how `medium` is used in later steps or revisit JavaScript targeting for classes, let me know. And thanks for sharing your journey—it’s inspiring to see your progress from C++ to freeCodeCamp!
+
+## Step 31 deepdive question
+> New question. 
+> Step 31 gives the following instructions. 
+> The rem unit stands for root em, and is relative to the font size of the html element.
+> 
+> Create a .small-text selector and set the font-size to 0.85rem, which would calculate to roughly 13.6px (remember that you set your html to have a font-size of 16px).
+> 
+> The solution for it is:
+> ```
+> .small-text {
+>   font-size: 0.85rem;
+> }
+> ```
+> 
+> Tell me more about rem and root em please. 
+
+## Step 31 response
+> Since you’re working on Step 31 of the freeCodeCamp "Learn Typography by Building a Nutrition Label" project and want to understand *what is happening and why*, I’ll provide a detailed explanation of the `rem` unit, what “root em” means, and how it’s used in the context of your project. Your preference for understanding the mechanics behind each step is clear, so I’ll focus on the purpose, behavior, and implications of `rem`, connect it to the `.small-text` selector in Step 31, and address why it’s useful for the nutrition label’s typography. I’ll keep the response clear, comprehensive, and relevant to your project.
+> 
+> ---
+> 
+> ### Context of Step 31
+> In the Nutrition Label project, you’re crafting a precise, readable layout that mimics a real-world nutrition label, with careful attention to typography. By Step 31, you’ve set up the HTML structure (e.g., `<header>`, `<div class="divider large">`, `<p>` elements with `<span>`s) and applied CSS, including Flexbox for spacing and classes like `.large` and `.medium` for dividers. Now, you’re fine-tuning typography with the `.small-text` selector to adjust the font size of certain text (likely nutrient details or fine print) using the `rem` unit.
+The instructions for Step 31 are:
+> 
+> - Create a `.small-text` selector with `font-size: 0.85rem`, which calculates to roughly 13.6px, given that the `html` element has a `font-size` of 16px.
+> - Solution:
+>   ```css
+>   .small-text {
+>     font-size: 0.85rem;
+>   }
+>   ```
+> 
+> Your question is to learn more about `rem` and “root em.” Let’s dive into these concepts, their mechanics, and their role in your project.
+> 
+> ---
+> 
+> ### What is `rem` and “Root em”?
+> 
+> #### Definition
+> - **rem**: Stands for **root em**, a CSS unit that is **relative** to the font size of the **root element**, which is the `<html>` element in an HTML document. It allows you to size elements proportionally based on a single, consistent base value.
+> - **Root em**: The term “root em” refers to the font size of the `<html>` element, which serves as the reference point for `rem` calculations. The “em” part comes from typography, where an “em” historically referred to the width of the letter “M” in a font, but in CSS, it’s tied to font size.
+> 
+> #### How `rem` Works
+> - The value of `1rem` equals the **computed font size** (in pixels) of the `<html>` element.
+> - By default, most browsers set the `<html>` element’s font size to **16px** unless overridden by CSS or user settings.
+> - A `rem` value is a multiplier of this root font size. For example:
+>   - `1rem` = 16px (if `<html>` is 16px).
+>   - `0.85rem` = 0.85 × 16px = **13.6px** (as noted in Step 31).
+>   - `2rem` = 2 × 16px = 32px.
+> 
+> #### Example in Step 31
+> - **Given**: The project instructions state that the `html` element has a `font-size` of **16px**, likely set earlier (e.g., `html { font-size: 16px; }`).
+> - **Code**:
+>   ```css
+>   .small-text {
+>     font-size: 0.85rem;
+>   }
+>   ```
+> - **What’s Happening**:
+>   - The `.small-text` selector applies to elements with the `small-text` class (e.g., a `<p>` or `<span>` in the label).
+>   - `font-size: 0.85rem` sets the font size to **0.85 × 16px = 13.6px**.
+> - **Why**:
+>   - Nutrition labels often use smaller text for secondary details (e.g., nutrient amounts, footnotes) to create a visual hierarchy while keeping content readable.
+>   - Using `0.85rem` ensures the text is slightly smaller than the default (16px) but scales proportionally if the root font size changes (e.g., due to user preferences or responsive design).
+> 
+> ---
+> 
+> ### Why Use `rem`? (Purpose and Benefits)
+> 
+> #### 1. Relative Scaling
+> - **What**: `rem` is relative to the `<html>` element’s font size, so changing the root font size (e.g., `html { font-size: 14px; }`) automatically adjusts all `rem`-based sizes proportionally.
+> - **Why**: This makes your design **scalable** and **maintainable**. For example:
+>   - If you later set `html { font-size: 14px; }`, then `0.85rem` becomes **0.85 × 14px = 11.9px**, updating all `.small-text` elements without changing the CSS rule.
+> - **In the Project**: The nutrition label needs consistent typography across devices or user settings (e.g., larger fonts for accessibility). `rem` ensures text sizes adapt if the root font size changes.
+> 
+> #### 2. Accessibility
+> - **What**: Users can override the browser’s default font size (16px) via browser settings (e.g., zooming text or setting a minimum font size). Since `rem` is tied to the root font size, it respects these user preferences.
+> - **Why**: This ensures your label remains readable for users with visual impairments who increase font sizes.
+> - **Example**: If a user sets their browser’s base font size to 20px, `0.85rem` becomes **0.85 × 20px = 17px**, keeping the `.small-text` proportional but larger.
+> 
+> #### 3. Consistency Across Elements
+> - **What**: Unlike `px` (absolute) or `em` (relative to the parent’s font size), `rem` uses a single reference point (`<html>`), ensuring uniform scaling across all elements.
+> - **Why**: In a nutrition label, where multiple text sizes (e.g., headings, nutrients, fine print) create a hierarchy, `rem` keeps sizes predictable and harmonious.
+> - **In the Project**: Using `0.85rem` for `.small-text` ensures smaller text (e.g., nutrient amounts) is consistently sized relative to other elements, like headings or body text.
+> 
+> #### 4. Simplified Responsive Design
+> - **What**: You can adjust the `html` font size in media queries to scale all `rem`-based elements at once.
+> - **Example**:
+>   ```css
+>   html {
+>     font-size: 16px;
+>   }
+>   @media (max-width: 600px) {
+>     html {
+>       font-size: 14px;
+>     }
+>   }
+>   .small-text {
+>     font-size: 0.85rem; /* 13.6px on desktop, 11.9px on mobile */
+>   }
+>   ```
+> - **Why**: This simplifies responsive typography, ensuring the label looks good on different screen sizes.
+> - **In the Project**: While freeCodeCamp projects are often desktop-focused, `rem` prepares you for real-world responsive design.
+> 
+> ---
+> 
+> ### `rem` vs. Other Units
+> 
+> To deepen your understanding, let’s compare `rem` to related units, especially since Step 31 mentions `px` (13.6px) and you’ve used `<span>` and Flexbox in earlier steps (e.g., Steps 23, 26–27).
+> 
+> #### 1. `px` (Pixels)
+> - **What**: An absolute unit representing physical pixels (though adjusted for high-DPI screens).
+> - **Example**: `font-size: 13.6px` (same as `0.85rem` when `html` is 16px).
+> - **Pros**: Precise, predictable size.
+> - **Cons**: Doesn’t scale with user settings or root font size changes, making it less accessible and harder to maintain.
+> - **Why Use `rem` Instead**: In Step 31, `0.85rem` is chosen over `13.6px` to ensure scalability and accessibility, critical for a professional label.
+> 
+> #### 2. `em` (Element-Based em)
+> - **What**: Relative to the **parent element’s font size** (or the element’s own font size for certain properties).
+> - **Example**:
+>   ```css
+>   p {
+>     font-size: 16px;
+>   }
+>   .small-text {
+>     font-size: 0.85em; /* 0.85 × 16px = 13.6px */
+>   }
+>   ```
+>   - If the parent `<p>`’s font size changes to `12px`, then `0.85em` = **10.2px**.
+> - **Cons**: `em` compounds with nested elements, making sizes unpredictable. Example:
+>   ```html
+>   <div style="font-size: 0.8em;">
+>     <p style="font-size: 0.8em;">
+>       <span class="small-text">Text</span> <!-- 0.85 × (0.8 × (0.8 × 16px))) = 8.704px -->
+>     </p>
+>   </div>
+>   ```
+> - **Why Use `rem` Instead**: `rem` avoids compounding by always referencing the `<html>` font size (16px in Step 31), ensuring `0.85rem` is consistently **13.6px** regardless of nesting.
+> 
+> #### 3. `%` (Percentage)
+> - **What**: Relative to the parent’s font size (similar to `em`).
+> - **Example**: `font-size: 85%` = **0.85 × parent’s font size**.
+> - **Cons**: Like `em`, it’s parent-dependent and compounds, less predictable than `rem`.
+> - **Why Use `rem`**: `rem`’s root-based reference is simpler for global typography control.
+> 
+> #### 4. `vw`, `vh`, `vmin`, `vmax` (Viewport Units)
+> - **What**: Relative to the viewport’s width or height (e.g., `1vw` = 1% of viewport width).
+> - **Cons**: Not ideal for font sizes, as they scale with window size, not user preferences.
+> - **Why Use `rem`**: `rem` is better for typography, as it ties to the root font size, not screen dimensions.
+> 
+> ---
+> 
+> ### `rem` in the Nutrition Label Project
+> 
+> #### Step 31’s Role
+> - **Code**:
+>   ```css
+>   .small-text {
+>     font-size: 0.85rem;
+>   }
+>   ```
+> - **Likely HTML Context**: The `small-text` class is probably applied to `<p>` or `<span>` elements for secondary text (e.g., nutrient amounts, percentages, or footnotes). Example:
+>   ```html
+>   <p>Sodium <span class="small-text">230mg</span> <span class="small-text">10%</span></p>
+>   ```
+> - **What’s Happening**:
+>   - The `html` element’s `font-size` is set to **16px** (per the instructions).
+>   - `.small-text` elements get `font-size: 0.85rem`, which is **13.6px** (0.85 × 16px).
+>   - This creates slightly smaller text for details, maintaining readability while emphasizing hierarchy (e.g., larger text for nutrient names, smaller for values).
+> - **Why**:
+>   - Nutrition labels use varied font sizes to distinguish primary info (e.g., “Nutrition Facts” in `<h1>`) from secondary details (e.g., “230mg”).
+>   - `rem` ensures these sizes scale consistently if the root font size changes, supporting accessibility and maintainability.
+> - **Visual Impact**: Text with `small-text` appears slightly smaller (13.6px vs. 16px), creating a clean, professional look typical of nutrition labels.
+> 
+> #### Connection to Earlier Steps
+> - **Step 23 (Flexbox)**: You used `display: flex` and `justify-content: space-between` to space `<p>` content (e.g., “Sodium” left, “10%” right). The `.small-text` class in Step 31 likely applies to `<span>`s within these `<p>`s, ensuring values like “230mg” are smaller but still aligned via Flexbox.
+> - **Step 26–27 (Dividers)**: You added `<div class="divider large">` with `height: 10px` and `background-color: black`. Using `rem` for typography (Step 31) complements the pixel-based sizing of dividers, as `rem` ensures text sizes scale with user settings, while dividers remain fixed for visual consistency.
+> - **Proper Syntax**: As you noted with `<p>` and `<span>` (e.g., avoiding `</>`), errors like `class="small-text"` (correct) vs. `class="small text"` (two classes) could break styling. Ensure the `small-text` class is applied correctly.
+> 
+> ---
+> 
+> ### Mechanics of `rem` in Browsers
+> - **Browser Default**: If no `html` font size is set, browsers default to **16px** (configurable by users). Step 31’s “16px” reference confirms this default or an explicit setting.
+> - **Computed Value**: Browsers calculate `rem` values in pixels based on the `<html>`’s computed font size. For `0.85rem`:
+>   - `0.85 × 16px = 13.6px` (displayed in DevTools as pixels).
+> - **Inheritance**: `font-size` inherits, so `.small-text` affects its element and descendants unless overridden.
+> - **Edge Cases**:
+>   - If `html { font-size: 62.5%; }` (a common trick to make `1rem = 10px`), then `0.85rem` = **8.5px**, but Step 31 uses `16px`, so this doesn’t apply.
+>   - If a user’s browser overrides the base font size (e.g., 20px), `0.85rem` scales to **17px**, enhancing accessibility.
+> 
+> ---
+> 
+> ### Why `rem` in Step 31?
+> - **Typography Precision**: The nutrition label requires a hierarchy (e.g., large headings, small nutrient text) to mimic real labels. `0.85rem` (13.6px) is small enough for details but legible.
+> - **Scalability**: `rem` allows the font size to adjust if the root changes (e.g., for responsiveness or user settings), unlike `px`.
+> - **Consistency**: Using `rem` across the project (likely for other text sizes later) ensures proportional typography.
+> - **Modern Practice**: `rem` is preferred over `px` for font sizes in modern web design due to its flexibility and accessibility benefits.
+> 
+> ---
+> 
+> ### Practical Tips for the Nutrition Label Project
+> - **Inspect Font Size**: Use browser DevTools to check `.small-text` elements. Hover over a `<span class="small-text">` to confirm its computed font size (13.6px) and ensure it’s applied correctly.
+> - **Test Root Changes**: Temporarily add `html { font-size: 14px; }` in DevTools to see `.small-text` scale to **11.9px** (0.85 × 14px), reinforcing `rem`’s relativity.
+> - **Check Class Application**: Ensure `small-text` is applied as a single class (e.g., `class="small-text"`, not `class="small text"`), as spaces create multiple classes (per your Step 26 insight).
+> - **Look Ahead**: Expect other `rem`-based rules (e.g., for headings or other text) in later steps to maintain the label’s typography hierarchy.
+> - **Connect to Python**: Think of `rem` like a Python variable tied to a global constant (e.g., `ROOT_FONT_SIZE = 16`). Changing the constant (`html` font size) updates all dependent values (`rem` sizes), similar to how you’d refactor Python code.
+> 
+> ---
+> 
+> ### Summary
+> - **What is `rem`**: A CSS unit (“root em”) relative to the `<html>` element’s font size (16px in Step 31). `0.85rem` = **13.6px** (0.85 × 16px) for `.small-text`, setting smaller text for nutrient details.
+> - **What is “Root em”**: Refers to the `<html>` element’s font size, the reference for `rem` calculations, ensuring consistent scaling.
+> - **Why Use `rem`**: Enables scalable, accessible typography that adjusts with the root font size, ideal for the nutrition label’s precise, hierarchical design.
+> - **Step 31 Context**: `.small-text { font-size: 0.85rem; }` applies 13.6px text to elements (e.g., `<span>`s for “230mg” or “10%”), creating a readable, professional look while supporting scalability.
+> - **Connection to Earlier Steps**: Complements Flexbox (Step 23) for layout and dividers (Steps 26–27) for structure, using `rem` to ensure typography adapts to user or design changes.
+> 
+> Your question shows you’re grasping how CSS units like `rem` fit into the nutrition label’s design, building on your earlier insights about classes (Step 26) and Flexbox (Step 23). You’re right to seek the “why” behind `rem`—it’s a powerful tool for modern web typography. If you want to explore how `.small-text` is applied in later steps or compare `rem` to other units in the project, let me know! Keep up the great work, and thanks for diving into these details!
+
+## Step 31 learning summery
+> That's cool! So rem, is a way to scale font off of a universal font size. I can see a ton of uses for that. 
