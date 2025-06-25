@@ -188,3 +188,115 @@ Whenever I run across something in my work on FreeCodeCamp that I do not know ab
 > ### Summary
 > 
 > The `<span>` element is a versatile, inline, non-semantic container used to style or manipulate specific portions of text or inline content without altering the document’s flow. In the Nutrition Label project, it’s likely used to apply typography styles (e.g., bolding or aligning nutrient values) to achieve the precise, professional look of a real label. Omitting or incorrectly closing the `<span>` tag can lead to styling errors, DOM issues, or accessibility problems, especially as your project grows in complexity. By using `<span>` correctly with proper closing tags and CSS, you ensure a robust, maintainable, and visually accurate nutrition label. Understanding *why* `<span>` is used this way helps you build better HTML structures and prepares you for more advanced web development tasks. Let me know if you want examples tailored to specific steps in your project!
+
+## Step 22 Follow-up question
+> So, essentially, the span element is just used as a way to select things while leaving them inline ie unaffected until I add extra stuff through CSS and JavaScript?
+
+## Response to Follow-up Question
+> Exactly! You’ve nailed the core idea of the `<span>` element. Since you’re working on the freeCodeCamp "Learn Typography by Building a Nutrition Label" project and want to understand *what is happening and why*, let me confirm and clarify your understanding while keeping it concise and relevant.
+>
+> ### What’s Happening with `<span>`
+> - The `<span>` element is a **generic, inline container** that doesn’t affect the layout or flow of the page on its own. It simply wraps text or other inline content, leaving it "inline" (no line breaks or block-level behavior).
+> - Its primary role is to act as a **hook** for targeting specific content with **CSS** (for styling) or **JavaScript** (for interactivity) without adding any semantic meaning or visual change by default.
+> - Example:
+>   ```html
+>   <p>Serving size: <span>2/3 cup</span></p>
+>   ```
+>   - **What**: The `<span>` wraps "2/3 cup" but doesn’t change how it looks or behaves until you add CSS (e.g., `font-weight: bold`) or JavaScript (e.g., a tooltip).
+>   - **Why**: It gives you precise control over a small piece of content within a larger element (like a `<p>`) without disrupting the inline flow.
+> 
+> ### Why This Matters
+> - **In the Nutrition Label Project**: You’ll likely use `<span>` to style specific parts of the label, like making nutrient values bold or aligning units (e.g., "g" or "%"). It’s a way to apply typography rules selectively, which is critical for mimicking a real nutrition label’s clear, structured look.
+> - **No Effect Without CSS/JavaScript**: Without styling or scripting, `<span>` is invisible in terms of rendering—it’s just a marker. This makes it flexible but reliant on additional code to "do something."
+> - **Inline Nature**: Unlike block elements (e.g., `<div>`), `<span>` doesn’t break the flow of text, so it’s perfect for targeting small bits of content within a sentence or paragraph.
+> 
+> ### Potential Pitfalls
+> - As you noted in your earlier question about the `<p>` tag, improper closing tags (e.g., `<span>Text</>` instead of `<span>Text</span>`) can cause issues. Without a proper `</span>`, browsers might guess where the element ends, leading to styling or scripting errors, especially in complex layouts like your nutrition label.
+> - **Why**: The browser’s error recovery might work for simple HTML, but when you add CSS (e.g., `.nutrient-value { font-weight: bold; }`) or JavaScript, an incorrect `<span>` closure could apply styles to the wrong content or break functionality.
+> 
+> ### Example in Context
+> In your project, you might see something like:
+> ```html
+> <p>Total Fat <span class="bold">8g</span></p>
+> ```
+> - **What’s happening**: The `<span>` lets you target "8g" for styling (e.g., bold via CSS) without affecting "Total Fat."
+> - **Why**: Nutrition labels emphasize values for readability, and `<span>` enables this precise styling while keeping the content inline within the paragraph.
+> 
+> ### Summary
+> Yes, the `<span>` element is essentially a tool to **select and manipulate inline content** without altering the page’s flow until you apply CSS (for visual changes) or JavaScript (for interactivity). In your Nutrition Label project, it’s key for applying typography styles to specific parts of the label, ensuring a polished, professional look. Always use proper closing tags (`</span>`) to avoid issues as you add complexity. Great job connecting the dots—let me know if you want to dive deeper into how `<span>` is used in specific steps of your project!
+
+## Thoughts on use of Span element relating to step 22 deep dive
+> If I just wanted to make something bold, span would seem like overkill. But if I wanted to make a bunch of specific changes to something, like making it bold, changing the font style and size, then thatsounds like a perfect use for the span tool. 
+
+## Response to thoughts on span useage
+> You’re absolutely right, and your understanding aligns perfectly with the practical use of the `<span>` element in the context of the freeCodeCamp "Learn Typography by Building a Nutrition Label" project. Since you want to know *what is happening and why*, let’s break down your observation about when to use `<span>` for bold text versus multiple styles, and why it makes sense in your project.
+>
+> ### When `<span>` for Bold Text is Overkill
+> - **Scenario**: If you only want to make text bold and don’t need additional styling or scripting, using `<span>` with CSS might be unnecessary. Instead, you can use semantic or simpler inline elements:
+>   - **`<strong>`**: Adds bold styling *and* semantic meaning, indicating importance (e.g., key information). Screen readers emphasize it for accessibility.
+>     ```html
+>     <p>Total Fat <strong>8g</strong></p>
+>     ```
+>     - **What’s happening**: The browser renders "8g" as bold, and the `<strong>` tag conveys that this value is significant.
+>     - **Why**: It’s simpler, semantic, and accessible without needing CSS.
+>   - **`<b>`**: Adds bold styling without semantic meaning, purely for visual effect.
+>     ```html
+>     <p>Total Fat <b>8g</b></p>
+>     ```
+>     - **What’s happening**: "8g" is bolded, but no additional meaning is conveyed.
+>     - **Why**: It’s a lightweight option for purely visual bolding, though less preferred in modern HTML due to lack of semantics.
+> - **Why `<span>` is overkill here**: > If the only goal is bold text, `<span>` requires extra CSS (e.g., `<span style="font-weight: bold;">8g</span>` or a class), adding unnecessary complexity. `<strong>` or `<b>` achieve the same visual result with less code.
+> 
+> ### When `<span>` is Perfect for Multiple Styles
+> - **Scenario**: When you want to apply multiple styles (e.g., bold, font style, font size, color) to a specific piece of inline text, `<span>` is ideal because it’s a flexible, non-semantic container that can handle complex CSS rules.
+>   - Example in the Nutrition Label project:
+>     ```html
+>     <p>Total Fat <span class="nutrient-value">8g</span></p>
+>     ```
+>     ```css
+>     .nutrient-value {
+>       font-weight: bold;
+>       font-style: italic;
+>       font-size: 14px;
+>       color: #333;
+>     }
+>     ```
+>     - **What’s happening**: The `<span>` wraps "8g," allowing you to apply multiple CSS properties (bold, italic, specific font size, and color) to just that text, leaving "Total Fat" unaffected.
+>     - **Why**: Nutrition labels require precise typography, where values like "8g" might need multiple styles to stand out (e.g., bold for emphasis, smaller font for units, or italic for specific formatting). `<span>` gives you the flexibility to combine these styles in one place.
+> - **Why `<span>` shines here**:
+>   - **Flexibility**: You can apply any combination of CSS properties without being limited to a single effect (like bolding with `<strong>` or `<b>`).
+>   - **Reusability**: Using a class (e.g., `nutrient-value`) on multiple `<span>` elements ensures consistent styling across the label (e.g., for "8g," "230mg," etc.).
+>   - **Maintainability**: Centralizing styles in CSS (rather than inline with `style="..."`) makes it easier to update the design later.
+>   - **Non-semantic**: If the text doesn’t carry specific meaning (e.g., it’s just a value, not inherently "important" like `<strong>` implies), `<span>` avoids adding unnecessary semantics.
+> 
+> ### Why This Matters in the Nutrition Label Project
+> - **Single Style (Bold)**: Early in the project, if you’re just bolding values like "8g," `<strong>` might suffice, especially since nutrition labels often emphasize key data, and `<strong>` adds semantic value. For example:
+>   ```html
+>   <p>Serving size: <strong>2/3 cup (55g)</strong></p>
+>   ```
+>   - **Why**: It’s quick, semantic, and matches the label’s need to highlight important info.
+> - **Multiple Styles**: As the project progresses, you’ll likely need to apply complex typography (e.g., bold numbers, smaller units, specific colors, or alignment). This is where `<span>` becomes essential:
+>   ```html
+>   <p>Sodium <span class="nutrient">230mg</span> <span class="daily-value">10%</span></p>
+>   ```
+>   ```css
+>   .nutrient {
+>     font-weight: bold;
+>     font-size: 12px;
+>   }
+>   .daily-value {
+>     font-style: italic;
+>     color: #666;
+>   }
+>   ```
+>   - **What’s happening**: Each `<span>` targets a specific part of the line, allowing different styles for the nutrient amount ("230mg") and daily value ("10%").
+>   - **Why**: Nutrition labels use varied typography to distinguish values, units, and percentages for clarity, and `<span>` enables this precision while keeping the content inline.
+> 
+> ### Potential Issues to Watch For
+> - **Improper Closing Tags**: As you noted with the `<p>` element in your earlier question, an incorrect closing tag like `<span>8g</>` instead of `<span>8g</span>` can cause problems. With multiple styles on a `<span>`, a missing `</span>` might apply CSS rules (e.g., bold, italic) to unintended content, breaking the label’s layout or readability.
+>   - **Why**: Browsers may guess where the `<span>` ends, leading to inconsistent rendering, especially when CSS or JavaScript is involved.
+> - **Overusing `<span>`**: If you use `<span>` for every minor style change without organizing classes, your HTML and CSS can become cluttered. Use semantic elements like `<strong>` when appropriate, and group similar styles into reusable classes.
+>   - **Why**: Clean, maintainable code is easier to debug and scale, especially in a project like the nutrition label with many styled elements.
+> 
+> ### Summary
+> You’re spot on: using `<span>` just to make text bold is overkill when `<strong>` or `<b>` can do the job simply and, in the case of `<strong>`, add semantic value. However, `<span>` is perfect when you need to apply multiple styles (e.g., bold, font style, size, color) to inline content, as it offers flexibility and precision without altering the document’s flow. In the Nutrition Label project, `<span>` is likely used for complex typography to style nutrient values and units distinctly, ensuring the label looks professional and clear. Always use proper closing tags to avoid styling errors as complexity grows. Great insight—let me know if you want to explore how `<span>` applies to specific steps in your project!
